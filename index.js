@@ -16,17 +16,10 @@ const questionTools = [
       [
         "[1] Botlike v1",
         "[2] Botlike v2",
-        "[3] Delete All Media",
-        "[4] Unfollow All Following",
-        "[5] Unfollow Not Followback",
-        "[6] Follow Followers Target",
-        "[7] Follow Account By Media",
-        "[8] Follow Account By Hastag",
-        "[9] Follow Account By Location",
-        "[10] Follow Followers Target No Like",
-	"[11] Follow Followers Target No Comment & Like",
-        "[12] Bom Like Post Target",
-	"[12] Bom Komen Post Target",
+        "[3] Borrar multimedia,
+        "[4] Dejar de seguir a seguidores",
+        "[5] Dejar de seguir a no seguidores",
+        "[6] Seguir seguidores de cuenta objetivo",
         "\n"
       ] 
   }
@@ -48,57 +41,24 @@ const main = async () => {
         await botlike2();
         break;
 
-      case "[3] Delete All Media":
+      case "[3] Borrar multimedia":
         const dellallphoto = require('./dellallphoto.js');
         await dellallphoto();
         break;
 
-      case "[4] Unfollow All Following":
+      case "[4] Dejar de seguir a seguidores":
         const unfollall = require('./unfollall.js');
         await unfollall();
         break;
 
-      case "[5] Unfollow Not Followback":
+      case "[5] Dejar de seguir a no seguidores":
         const unfollnotfollback = require('./unfollnotfollback.js');
         await unfollnotfollback();
         break;
 
-      case "[6] Follow Followers Target":
+      case "[6] Seguir seguidores de cuenta objetivo":
         const fftauto = require('./fftauto.js');
         await fftauto();
-        break;
-
-      case "[7] Follow Account By Media":
-        const flmauto = require('./flmauto.js');
-        await flmauto();
-        break;
-
-      case "[8] Follow Account By Hastag":
-        const fah = require('./fah.js');
-        await fah();
-        break;
-
-      case "[9] Follow Account By Location":
-        const flaauto = require('./flaauto.js');
-        await flaauto();
-        break;
-		
-	   case "[10] Follow Followers Target No Like":
-        const fft = require('./fft.js');
-        await fft();
-        break;
-
-	   case "[11] Follow Followers Target No Comment & Like":
-        const fftold = require('./fftold.js');
-        await fftold();
-        break;
-	   case "[12] Bom Like Post Target":
-        const bomlike = require('./bomlike.js');
-        await bomlike();
-        break;
-	 case "[13] Bom Komen Post Target":
-        const bomkomen = require('./bomkomen.js');
-        await bomkomen();
         break;
       default:
         console.log('\nERROR:\n[?] Aw, Snap! \n[!] Something went wrong while displaying this program!\n[!] Please try again!');
@@ -110,13 +70,14 @@ const main = async () => {
 }
 
 console.log(chalk`
-  {bold.cyan
-  ╦┌┐┌┌─┐┌┬┐┌─┐┌─┐┬─┐┌─┐┌┬┐
-  ║│││└─┐ │ ├─┤│ ┬├┬┘├─┤│││
-  ╩┘└┘└─┘ ┴ ┴ ┴└─┘┴└─┴ ┴┴ ┴
-  ╔╦╗┌─┐┌─┐┬  ┌─┐    © 2018
-   ║ │ ││ ││  └─┐   SGBTeam 
-   ╩ └─┘└─┘┴─┘└─┘   -------       
+  {bold.red
+  #     #  #####  ####### 
+ #   #  #     #    #    
+  # #   #          #    
+   #    #          #    
+   #    #          #    
+   #    #     #    #    
+   #     #####     #    © 2021    
 }
       `);
 
