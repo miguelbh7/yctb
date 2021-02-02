@@ -12,7 +12,7 @@ const User = [
 {
   type:'input',
   name:'username',
-  message:'[>] Insert Username:',
+  message:'[>] Usuario YCT:',
   validate: function(value){
     if(!value) return 'Can\'t Empty';
     return true;
@@ -21,7 +21,7 @@ const User = [
 {
   type:'password',
   name:'password',
-  message:'[>] Insert Password:',
+  message:'[>] Contraseña YCT:',
   mask:'*',
   validate: function(value){
     if(!value) return 'Can\'t Empty';
@@ -31,7 +31,7 @@ const User = [
 {
   type:'input',
   name:'target',
-  message:'[>] Insert Username Target (Without @[at]):',
+  message:'[>] Usuario Objetivo (Sin @[at]):',
   validate: function(value){
     if(!value) return 'Can\'t Empty';
     return true;
@@ -50,7 +50,7 @@ const User = [
 {
   type:'input',
   name:'sleep',
-  message:'[>] Insert Sleep (MiliSeconds):',
+  message:'[>] Periodo (Milisegundos):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
@@ -86,7 +86,7 @@ const Target = async function(username){
     const data = S(account).between('<script type="text/javascript">window._sharedData = ', ';</script>').s
     const json = JSON.parse(data);
     if (json.entry_data.ProfilePage[0].graphql.user.is_private) {
-      return Promise.reject('Target is private Account');
+      return Promise.reject('Objetivo con cuenta privada');
     } else {
       const id = json.entry_data.ProfilePage[0].graphql.user.id;
       const followers = json.entry_data.ProfilePage[0].graphql.user.edge_followed_by.count;
