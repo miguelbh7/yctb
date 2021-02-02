@@ -14,7 +14,7 @@ const User = [
   name:'username',
   message:'[>] Usuario YCT:',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Introduce User';
     return true;
   }
 },
@@ -24,7 +24,7 @@ const User = [
   message:'[>] Contraseña YCT:',
   mask:'*',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Introduce Pass';
     return true;
   }
 },
@@ -33,18 +33,18 @@ const User = [
   name:'target',
   message:'[>] Usuario Objetivo (Sin @[at]):',
   validate: function(value){
-    if(!value) return 'Can\'t Empty';
+    if(!value) return 'Introduce usuario';
     return true;
   }
 },
 {
   type:'input',
   name:'mysyntx',
-  message:'[>] Input Total of Target You Want (ITTYW):',
+  message:'[>] Entrada de objetivos (ITTYW):',
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
-    return 'Use Number Only!';
+    return 'Solo Números!';
   }
 },
 {
@@ -54,7 +54,7 @@ const User = [
   validate: function(value){
     value = value.match(/[0-9]/);
     if (value) return true;
-    return 'Delay is number';
+    return 'Solo Numeros';
   }
 }
 ]
@@ -172,13 +172,13 @@ const Followers = async function(session, id){
 
 const Excute = async function(User, TargetUsername, Sleep, mysyntx){
   try {
-    console.log(chalk`{yellow \n [?] Try to Login . . .}`)
+    console.log(chalk`{yellow \n [?] Intentando logear . . .}`)
     const doLogin = await Login(User);
-    console.log(chalk`{green  [!] Login Succsess, }{yellow [?] Try To Get ID & Followers Target . . .}`)
+    console.log(chalk`{green  [!] Logeado correctamente, }{yellow [?] Comenzando ataque . . .}`)
     const getTarget = await Target(TargetUsername);
-    console.log(chalk`{green  [!] ${TargetUsername}: [${getTarget.id}] | Followers: [${getTarget.followers}]}`)
+    console.log(chalk`{green  [!] ${TargetUsername}: [${getTarget.id}] | Seguidores: [${getTarget.followers}]}`)
     const getFollowers = await Followers(doLogin.session, doLogin.account.id)
-    console.log(chalk`{cyan  [?] Try to Follow, Comment, and Like Followers Target . . . \n}`)
+    console.log(chalk`{cyan  [?] Intentando seguir . . . \n}`)
     const Targetfeed = new Client.Feed.AccountFollowers(doLogin.session, getTarget.id);
     var TargetCursor;
     do {
@@ -196,7 +196,7 @@ const Excute = async function(User, TargetUsername, Sleep, mysyntx){
             const ngeDo = await CommentAndLike(doLogin.session, akun.id, iki)
             console.log(chalk`[{magenta ${timeNow}}] {bold.green [>]}${akun.params.username} => ${ngeDo}`)
           } else {
-            console.log(chalk`[{magenta ${timeNow}}] {bold.yellow [SKIP]}${akun.params.username} => PRIVATE OR ALREADY FOLLOWED`)
+            console.log(chalk`[{magenta ${timeNow}}] {bold.yellow [F]}${akun.params.username} => PRIVADO o YA SEGUIDO`)
           }
         }));
         console.log(chalk`{yellow \n [#][>] Delay For ${Sleep} MiliSeconds [<][#] \n}`);
@@ -212,21 +212,12 @@ const Excute = async function(User, TargetUsername, Sleep, mysyntx){
 }
 
 console.log(chalk`
-  {bold.cyan
-  —————————————————— [INFORMATION] ————————————————————
+  {bold.red
+  ***************** [INFORMACION] ********************
 
-  [?] {bold.green FFTauto | Using Account/User Target!}
-  [?] {bold.green Gunakan komen.txt untk komen!}
-
-  ——————————————————  [THANKS TO]  ————————————————————
-  [✓] CODE BY CYBER SCREAMER CCOCOT (ccocot@bc0de.net)
-  [✓] FIXING & TESTING BY SYNTAX (@officialputu_id)
-  [✓] CCOCOT.CO | BC0DE.NET | NAONLAH.NET | WingkoColi
-  [✓] SGB TEAM REBORN | Zerobyte.id | ccocot@bc0de.net 
-  —————————————————————————————————————————————————————
-  What's new?
-  1. Input Target/delay Manual (ITTYW)
-  —————————————————————————————————————————————————————}
+  [?] {bold.green FFTauto|Seguir seguidores de cuenta}
+  [?] {Remo©}
+  *****************************************************}
       `);
 //ikiganteng
 inquirer.prompt(User)
