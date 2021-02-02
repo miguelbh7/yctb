@@ -16,7 +16,7 @@ const questionTools = [
       [
         "[1] Botlike v1",
         "[2] Botlike v2",
-        "[3] Borrar multimedia,
+        "[3] Borrar multimedia",
         "[4] Dejar de seguir a seguidores",
         "[5] Dejar de seguir a no seguidores",
         "[6] Seguir seguidores de cuenta objetivo",
