@@ -107,24 +107,6 @@ async function ngefollow(session,accountId){
   }
 }
 
-async function ngeComment(session, id, text){
-  try {
-    await Client.Comment.create(session, id, text);
-    return true;
-  } catch(e){
-    return false;
-  }
-}
-
-async function ngeLike(session, id){
-  try{
-    await Client.Like.create(session, id)
-    return true;
-  } catch(e) {
-    return false;
-  }
-}
-
 const CommentAndLike = async function(session, accountId, text){
   var result;
 
@@ -139,14 +121,7 @@ const CommentAndLike = async function(session, accountId, text){
   if (result.length > 0) {
     const task = [
     ngefollow(session, accountId),
-    ngeComment(session, result[0].params.id, text),
-    ngeLike(session, result[0].params.id)
     ]
-    const [Follow,Comment,Like] = await Promise.all(task);
-    const printFollow = Follow ? chalk`{green Follow}` : chalk`{red Follow}`;
-    const printComment = Comment ? chalk`{green Comment}` : chalk`{red Comment}`;
-    const printLike = Like ? chalk`{green Like}` : chalk`{red Like}`;
-    return chalk`{bold.green ${printFollow},${printComment},${printLike} [${text}]}`;
   }
   return chalk`{bold.white Timeline Kosong (SKIPPED)}`
 };
@@ -172,7 +147,7 @@ const Followers = async function(session, id){
 
 const Excute = async function(User, TargetUsername, Sleep, mysyntx){
   try {
-    console.log(chalk`{yellow \n [?] Intentando logear . . .}`)
+    console.log(chalk`{yellow \n [?] Logeando . . .}`)
     const doLogin = await Login(User);
     console.log(chalk`{green  [!] Logeado correctamente, }{yellow [?] Comenzando ataque . . .}`)
     const getTarget = await Target(TargetUsername);
@@ -216,7 +191,7 @@ console.log(chalk`
   ***************** [INFORMACION] ********************
 
   [?] {bold.green FFTauto|Seguir seguidores de cuenta}
-  [?] {Remo©}
+  [?] {YCT©}
   *****************************************************}
       `);
 //ikiganteng
